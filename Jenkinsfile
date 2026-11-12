@@ -13,7 +13,7 @@ pipeline {
       }
       stage ('Terraform init') {
         steps {
-            sh 'terraform init -input=false'
+            sh 'terraform init -backend-config=backend-jenkins.hcl -input=false'
         }
       }
       stage ('Terraform Validate') {
