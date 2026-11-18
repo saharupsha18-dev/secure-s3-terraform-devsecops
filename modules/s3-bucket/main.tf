@@ -55,10 +55,12 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
 
 resource "aws_s3_bucket_policy" "this" {
 
-  bucket = aws_s3_bucket.this.id #Terraform decides whether to create this resource here.
+  #Terraform decides whether to create this resource here.
+  bucket = aws_s3_bucket.this.id
   count  = var.enforce_secure_transport ? 1 : 0
 
-  policy = jsonencode({ # AWS policy rules are written here.
+  policy = jsonencode({
+    # AWS policy rules are written here.
     Version = "2012-10-17"
     Statement = [
       {
@@ -79,4 +81,12 @@ resource "aws_s3_bucket_policy" "this" {
     }]
 
   })
+}
+
+resource "aws_s3_bucket_logging" "this" {
+  count = var.enable_access_logging ? 1 : 0
+
+  bucket        = aws_s3_bucket.this.id
+  target_bucket = var.logging_target_bucket
+  target_prefix = "${var.environment}/"
 }
