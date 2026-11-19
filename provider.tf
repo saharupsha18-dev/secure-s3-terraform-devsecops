@@ -18,6 +18,7 @@ provider "aws" {
   s3_use_path_style           = true
 
   endpoints {
-    s3 = var.s3_endpoint
+    s3  = var.s3_endpoint
+    sqs = var.s3_endpoint
   }
 }
