@@ -21,3 +21,5 @@ override.tf.json
 
 #Terraform plan
 *.tfplan
+# Local Floci backup
+floci-container-backup.json
