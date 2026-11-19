@@ -1,6 +1,7 @@
 resource "aws_sqs_queue" "s3_notifications" {
   name                       = "secure-s3-project-notifications" #Actual queue name in Floci
   visibility_timeout_seconds = 30                                #How long a received message stays hidden from other consumers
+  sqs_managed_sse_enabled    = true
 
   tags = { #Metadata used to identify the queue
     Name        = "secure-s3-project-notifications"
