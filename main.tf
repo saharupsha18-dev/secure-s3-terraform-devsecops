@@ -57,7 +57,8 @@ resource "aws_s3_bucket_policy" "central_access_logs_policy" {
         Resource = [
           "${module.access_logs_bucket.bucket_arn}/dev/*",
           "${module.access_logs_bucket.bucket_arn}/test/*",
-          "${module.access_logs_bucket.bucket_arn}/production/*"
+          "${module.access_logs_bucket.bucket_arn}/production/*",
+          "${module.access_logs_bucket.bucket_arn}/crr-source/*"
         ]
 
         Condition = {
@@ -69,7 +70,8 @@ resource "aws_s3_bucket_policy" "central_access_logs_policy" {
             "aws:SourceArn" = [
               module.dev_bucket.bucket_arn,
               module.test_bucket.bucket_arn,
-              module.prod_bucket.bucket_arn
+              module.prod_bucket.bucket_arn,
+              "arn:aws:s3:::crr-source-bucket"
             ]
           }
         }
