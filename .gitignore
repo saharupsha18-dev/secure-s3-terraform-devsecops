@@ -23,3 +23,11 @@ override.tf.json
 *.tfplan
 # Local Floci backup
 floci-container-backup.json
+
+# Environment files
+.env
+.env.*
+
+# Private keys and certificates
+*.pem
+*.key
