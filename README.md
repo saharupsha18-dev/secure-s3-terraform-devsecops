@@ -619,7 +619,6 @@ The infrastructure is checked through several methods.
 ### Security Testing Limitation
 
 Floci is a local AWS emulator. A successful configuration check does not prove that every AWS security rule is enforced exactly as it would be in real AWS.
-
 Security controls should be tested again when deploying to an actual AWS environment.
 
 ---
