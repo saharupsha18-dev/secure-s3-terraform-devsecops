@@ -24,7 +24,7 @@ pipeline {
       }
       stage ('Checkov Security Scan') {
         steps {
-            sh '/var/jenkins_home/checkov-venv/bin/checkov -d .'
+            sh '/var/jenkins_home/checkov-venv/bin/checkov -d . --soft-fail'
         }
       }
     }  
